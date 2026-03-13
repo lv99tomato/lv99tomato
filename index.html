@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KANG I HYUN</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Josefin+Sans:wght@300&family=Noto+Sans+KR:wght@300;400;500&display=swap');
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -88,10 +88,43 @@
     top: 20px; left: 20px; z-index: -1;
   }
   .about-text p { color: #6b5040; line-height: 2; font-size: 1rem; font-weight: 300; margin-bottom: 1.5rem; }
-  .about-stats { display: flex; gap: 2rem; margin-top: 2.5rem; }
-  .stat { text-align: center; padding: 1.2rem 1.5rem; background: var(--beige); border-radius: 12px; flex: 1; }
-  .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--brown); display: block; }
-  .stat-label { font-size: 0.75rem; color: var(--soft); letter-spacing: 0.1em; }
+  .about-stats {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .stat {
+    text-align: center;
+    background: var(--beige);
+    border-radius: 12px;
+    flex: 1;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--brown);
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    color: var(--soft);
+    letter-spacing: 0.08em;
+    line-height: 1;
+    height: 1rem;
+    display: flex;
+    align-items: center;
+  }
 
   /* JOURNEY */
   .journey { background: var(--beige); }
@@ -107,36 +140,69 @@
   .card-desc { font-size: 0.85rem; color: #8b7060; line-height: 1.7; font-weight: 300; }
 
   /* ARRIVAL */
-  .arrival { background: var(--dark); color: var(--cream); text-align: center; position: relative; overflow: hidden; }
-  .arrival::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(201,169,122,0.2) 0%, transparent 70%); }
-  .arrival .section-label { color: var(--warm); }
-  .arrival .section-title { color: var(--cream); }
-  .arrival-quote { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 3vw, 1.8rem); font-style: italic; color: var(--warm); max-width: 700px; margin: 0 auto 3rem; line-height: 1.7; }
+  .arrival { background: linear-gradient(160deg, var(--cream) 0%, var(--beige) 60%, var(--warm) 100%); color: var(--dark); text-align: center; position: relative; overflow: hidden; }
+  .arrival .section-label { color: var(--rose); }
+  .arrival .section-title { font-family: 'Josefin Sans', sans-serif; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dark); }
+  .arrival-sub { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: var(--brown); margin-bottom: 0.5rem; }
   .arrival-cards { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 3rem; }
-  .arrival-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,169,122,0.3); border-radius: 16px; padding: 2rem; width: 200px; backdrop-filter: blur(10px); transition: all 0.3s; }
-  .arrival-card:hover { background: rgba(201,169,122,0.1); border-color: var(--rose); transform: scale(1.05); }
+  .arrival-card { background: rgba(255,255,255,0.65); border: 1px solid rgba(201,169,122,0.4); border-radius: 20px; padding: 2rem; width: 175px; backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(139,111,71,0.1); transition: all 0.3s; }
+  .arrival-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(139,111,71,0.15); }
   .arrival-card-icon { font-size: 2rem; margin-bottom: 0.8rem; }
-  .arrival-card-label { font-size: 0.7rem; letter-spacing: 0.2em; color: var(--soft); text-transform: uppercase; margin-bottom: 0.4rem; }
-  .arrival-card-val { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--warm); }
+  .arrival-card-label { font-size: 0.7rem; letter-spacing: 0.2em; color: var(--rose); text-transform: uppercase; margin-bottom: 0.4rem; }
+  .arrival-card-val { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--dark); }
+  /* stars */
+  .stars-wrap { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .star { position: absolute; background: var(--rose); border-radius: 50%; animation: twinkle ease-in-out infinite; }
+  @keyframes twinkle { 0%, 100% { opacity: 0.1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.6); } }
 
   /* GALLERY */
   .gallery { background: var(--cream); }
-  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 200px; gap: 1rem; margin-top: 3rem; }
-  .g-item { border-radius: 12px; overflow: hidden; position: relative; cursor: pointer; }
-  .g-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-  .g-item:nth-child(4) { grid-column: span 2; }
-  .g-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); }
-  .g-item:hover .g-inner { transform: scale(1.08); }
-  .g-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(61,43,31,0.5), transparent); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 1rem; }
-  .g-item:hover .g-overlay { opacity: 1; }
-  .g-overlay span { color: white; font-size: 0.8rem; letter-spacing: 0.1em; }
+  .gallery-slider { position: relative; margin-top: 3rem; border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; background: var(--beige); max-width: 700px; margin-left: auto; margin-right: auto; }
+  .gallery-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.7s ease; display: flex; align-items: center; justify-content: center; font-size: 5rem; }
+  .gallery-slide.active { opacity: 1; }
+  .gallery-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gallery-slide .g-emoji { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 5rem; }
+  .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(61,43,31,0.35), transparent 50%); pointer-events: none; }
+  .gallery-label { position: absolute; bottom: 1.2rem; left: 50%; transform: translateX(-50%); color: white; font-size: 0.8rem; letter-spacing: 0.15em; white-space: nowrap; }
+  .gallery-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.7); border: none; cursor: pointer;
+    width: 44px; height: 44px; border-radius: 50%;
+    font-size: 1.1rem; color: var(--brown);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s; backdrop-filter: blur(6px);
+    box-shadow: 0 4px 16px rgba(139,111,71,0.15);
+    z-index: 10;
+  }
+  .gallery-btn:hover { background: rgba(255,255,255,0.95); transform: translateY(-50%) scale(1.1); }
+  .gallery-btn.prev { left: 1rem; }
+  .gallery-btn.next { right: 1rem; }
+  .gallery-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.2rem; }
+  .gallery-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--warm); cursor: pointer; transition: all 0.3s; border: none; }
+  .gallery-dot.active { background: var(--brown); transform: scale(1.3); }
 
   /* FOOTER */
-  footer { background: var(--dark); color: var(--soft); text-align: center; padding: 4rem 2rem; }
-  footer .footer-title { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--warm); margin-bottom: 0.8rem; letter-spacing: 0.15em; }
-  footer p { font-size: 0.85rem; line-height: 2; font-weight: 300; }
+  footer { background: linear-gradient(160deg, var(--cream) 0%, var(--beige) 60%, var(--warm) 100%); color: var(--brown); text-align: center; padding: 4rem 2rem; position: relative; overflow: hidden; }
+  footer .footer-title { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--dark); margin-bottom: 0.8rem; letter-spacing: 0.15em; }
+  footer p { font-size: 0.85rem; line-height: 2; font-weight: 300; color: var(--brown); }
   footer .footer-heart { font-size: 1.5rem; margin: 1.5rem 0; }
   footer .footer-line { width: 60px; height: 1px; background: var(--rose); margin: 2rem auto; }
+  footer .footer-inner { position: relative; z-index: 2; }
+  /* confetti */
+  .confetti-wrap { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .confetti-piece {
+    position: absolute;
+    width: 8px; height: 8px;
+    border-radius: 2px;
+    opacity: 0;
+    animation: confettiFall linear infinite;
+  }
+  @keyframes confettiFall {
+    0%   { opacity: 0; transform: translateY(-20px) rotate(0deg); }
+    10%  { opacity: 1; }
+    90%  { opacity: 0.6; }
+    100% { opacity: 0; transform: translateY(300px) rotate(540deg) translateX(30px); }
+  }
 
   /* ANIMATIONS */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -213,7 +279,7 @@
         </div>
         <div class="about-stats">
           <div class="stat">
-            <span class="stat-num" style="font-size:1.5rem; font-weight:700;">37w 4d</span>
+            <span class="stat-num" style="font-size:1.1rem; font-weight:700;">37w 4d</span>
             <span class="stat-label">주간의 여정</span>
           </div>
           <div class="stat">
@@ -235,55 +301,58 @@
   <div class="section-inner">
     <div class="reveal">
       <div class="section-label">The Journey</div>
-      <h2 class="section-title">임신의 여정,<br>월별 기록</h2>
+      <h2 class="section-title">꼬북이와 함께한<br>아홉달의 시간</h2>
     </div>
     <div class="journey-grid">
       <div class="journey-card reveal">
         <div class="card-img bg1">🌱</div>
+        <img src="image (14).jpg" alt="1-3개월" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;">
         <div class="card-body">
           <div class="card-week">1–3개월</div>
-          <div class="card-title">첫 만남의 설렘</div>
-          <p class="card-desc">두 줄이 보이던 그 아침. 처음으로 심장 소리를 들은 날. 모든 것이 달라 보이기 시작했어요.</p>
+          <div class="card-title">너, 거기 있는거니..?</div>
+          <p class="card-desc">작은 기척도 없는 너가 잘 있는지 보려고 매주 병원을 찾아가던 시기. 우렁찬 심장소리를 듣고 나면 그제서야 안도하곤 했어 😮‍💨</p>
         </div>
       </div>
       <div class="journey-card reveal">
-        <div class="card-img bg2">🌸</div>
+        <div class="card-img bg4">🩵</div>
+        <img src="image (21).jpg" alt="성별 발표" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;">
+        <div class="card-body">
+          <div class="card-week">성별 발표</div>
+          <div class="card-title">파란색의 하트를 보내</div>
+          <p class="card-desc">우리 꼬북이의 성별은 두구두구..! 가족들 앞에서 파란 풍선이 모습을 드러낸 순간, 모두가 웃음이 터진 이유는..?! 우리 꼬북이는~ 아들입니다~ 💙</p>
+        </div>
+      </div>
+      <div class="journey-card reveal">
+        <div class="card-img bg2">🦶</div>
+        <img src="5months.png" alt="4-6개월" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;">
         <div class="card-body">
           <div class="card-week">4–6개월</div>
-          <div class="card-title">처음 느낀 태동</div>
-          <p class="card-desc">작은 발길질 하나에 눈물이 날 것 같았어요. 네가 거기 있다는 걸 온몸으로 느꼈던 순간들.</p>
+          <div class="card-title">엄마 나 여기있어요!</div>
+          <p class="card-desc">어느날 문득 찾아온 너의 기척. 어쩌다 잠잠한 날엔 불안해지기도 했지만, 그럼에도 조금 기다리면 '나 여기에 잘 있어요'라고 알려주듯이 열심히 움직여준 꼬북이, 고마워 💛</p>
         </div>
       </div>
       <div class="journey-card reveal">
         <div class="card-img bg3">🌼</div>
         <div class="card-body">
           <div class="card-week">7–9개월</div>
-          <div class="card-title">점점 커지는 배</div>
-          <p class="card-desc">거울 앞에 서면 믿기지 않을 만큼 커진 배. 불편했지만 이 모든 게 행복이었어요.</p>
+          <div class="card-title">너를 맞이할 준비</div>
+          <p class="card-desc">배가 이렇게까지 커질 수 있다니, 매일이 놀라움의 연속이야 👶 꼬북이의 방도 꾸미고, 옷과 물건들도 준비하며 너를 기다리는 설레는 시간!</p>
         </div>
       </div>
       <div class="journey-card reveal">
-        <div class="card-img bg4">🎀</div>
-        <div class="card-body">
-          <div class="card-week">성별 발표</div>
-          <div class="card-title">드디어 알게 된 비밀</div>
-          <p class="card-desc">핑크인지 블루인지, 모두가 궁금해했던 그 날. 케이크를 자르던 순간의 탄성.</p>
-        </div>
-      </div>
-      <div class="journey-card reveal">
-        <div class="card-img bg5">🏥</div>
+        <div class="card-img bg5">👶</div>
         <div class="card-body">
           <div class="card-week">검진 기록</div>
-          <div class="card-title">초음파 속 너의 얼굴</div>
-          <p class="card-desc">흑백 화면 속에서 손가락을 빠는 너를 보며 아빠는 눈물을 참지 못했어요.</p>
+          <div class="card-title">누굴 닮아 이렇게 예쁜지</div>
+          <p class="card-desc">드디어 제대로 얼굴을 보여준 첫 순간! 눈, 코, 입 하나 하나 천천히 뜯어보며 어디는 아빠를 닮았네, 어디는 엄마를 닮았네 하는 시간이 너무 즐거웠어 🤎 도치맘 확정!</p>
         </div>
       </div>
       <div class="journey-card reveal">
         <div class="card-img bg6">🎁</div>
         <div class="card-body">
-          <div class="card-week">D-30</div>
-          <div class="card-title">만남을 준비하며</div>
-          <p class="card-desc">작은 옷들을 개고, 방을 꾸미고, 이름을 수도 없이 불러봤어요. 곧 만날 너를 생각하며.</p>
+          <div class="card-week">D-60</div>
+          <div class="card-title">만삭 촬영 Day!</div>
+          <p class="card-desc">너를 만나기까지 단 두달. 부지런하지 못한 우리라 매주 사진을 찍지는 못했지만, 칸쵸형아 🐶와 함께 만삭 사진은 남겨봤어 🤰 얼른 만나자, 보고싶어 !</p>
         </div>
       </div>
     </div>
@@ -292,11 +361,12 @@
 
 <!-- ARRIVAL -->
 <section class="arrival" id="arrival">
+  <div class="stars-wrap" id="stars"></div>
   <div class="section-inner">
     <div class="reveal">
       <div class="section-label">The Arrival</div>
-      <h2 class="section-title">드디어, 너를<br>만났습니다</h2>
-      <p class="arrival-quote">"세상에서 가장 작은 손이 우리의 손가락을 꼭 쥐었을 때, 우리의 세계는 완성되었습니다."</p>
+      <h2 class="section-title">Welcome to<br>the world !</h2>
+      <p class="arrival-sub">혜수 지원의 미니미 강꼬북, 지구별 도착! ✨</p>
     </div>
     <div class="arrival-cards reveal">
       <div class="arrival-card">
@@ -328,44 +398,46 @@
   <div class="section-inner">
     <div class="reveal">
       <div class="section-label">Memories</div>
-      <h2 class="section-title">함께한 순간들</h2>
+      <h2 class="section-title">우리들의 기록</h2>
     </div>
-    <div class="gallery-grid reveal">
-      <div class="g-item">
-        <div class="g-inner bg1">🤰</div>
-        <div class="g-overlay"><span>임신 초기</span></div>
+    <div class="gallery-slider reveal">
+      <div class="gallery-slide active">
+        <div class="g-emoji">🤰</div>
       </div>
-      <div class="g-item">
-        <div class="g-inner bg2">🌸</div>
-        <div class="g-overlay"><span>태동이 느껴질 때</span></div>
+      <div class="gallery-slide">
+        <div class="g-emoji">🌸</div>
       </div>
-      <div class="g-item">
-        <div class="g-inner bg3">💑</div>
-        <div class="g-overlay"><span>우리 둘</span></div>
+      <div class="gallery-slide">
+        <div class="g-emoji">💑</div>
       </div>
-      <div class="g-item">
-        <div class="g-inner bg4">🎀</div>
-        <div class="g-overlay"><span>성별 발표 파티</span></div>
+      <div class="gallery-slide">
+        <div class="g-emoji">🎀</div>
       </div>
-      <div class="g-item">
-        <div class="g-inner bg5">👶</div>
-        <div class="g-overlay"><span>탄생의 순간</span></div>
+      <div class="gallery-slide">
+        <div class="g-emoji">👶</div>
       </div>
-      <div class="g-item">
-        <div class="g-inner bg6">🏠</div>
-        <div class="g-overlay"><span>집에 온 첫날</span></div>
+      <div class="gallery-slide">
+        <div class="g-emoji">🏠</div>
       </div>
+      <div class="gallery-overlay"></div>
+      <div class="gallery-label" id="gallery-label">임신 초기</div>
+      <button class="gallery-btn prev" onclick="moveSlide(-1)">&#8249;</button>
+      <button class="gallery-btn next" onclick="moveSlide(1)">&#8250;</button>
     </div>
+    <div class="gallery-dots" id="gallery-dots"></div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-title">KANG I HYUN</div>
-  <p>너로 인해 우리는 비로소 완전해졌어요.</p>
-  <div class="footer-heart">🤍</div>
-  <div class="footer-line"></div>
-  <p>Made with love · 2026</p>
+  <div class="confetti-wrap" id="confetti"></div>
+  <div class="footer-inner">
+    <div class="footer-title">KANG I HYUN</div>
+    <p>우리집에 온 걸 환영해, 이현아!</p>
+    <div class="footer-heart">🤍</div>
+    <div class="footer-line"></div>
+    <p>Made with love · 2026</p>
+  </div>
 </footer>
 
 <script>
@@ -377,6 +449,60 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
   document.querySelectorAll('.journey-card').forEach((card, i) => { card.style.transitionDelay = `${i * 0.1}s`; });
+
+  // 갤러리 슬라이더
+  const slides = document.querySelectorAll('.gallery-slide');
+  const labels = ['임신 초기', '태동이 느껴질 때', '우리 둘', '성별 발표 파티', '탄생의 순간', '집에 온 첫날'];
+  const dotsWrap = document.getElementById('gallery-dots');
+  const galleryLabel = document.getElementById('gallery-label');
+  let current = 0, autoTimer;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goSlide(i);
+    dotsWrap.appendChild(d);
+  });
+
+  function goSlide(n) {
+    slides[current].classList.remove('active');
+    dotsWrap.children[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dotsWrap.children[current].classList.add('active');
+    galleryLabel.textContent = labels[current];
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goSlide(current + 1), 3500);
+  }
+
+  function moveSlide(dir) { goSlide(current + dir); }
+  autoTimer = setInterval(() => goSlide(current + 1), 3500);
+  const confettiEl = document.getElementById('confetti');
+  const colors = ['#c9a97a','#e8d5b7','#d4b896','#f0e8d8','#8b6f47','#f5e6d3','#e8c87a'];
+  for (let i = 0; i < 40; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti-piece';
+    c.style.left = Math.random() * 100 + '%';
+    c.style.background = colors[Math.floor(Math.random() * colors.length)];
+    c.style.width = (6 + Math.random() * 8) + 'px';
+    c.style.height = (6 + Math.random() * 8) + 'px';
+    c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    c.style.animationDuration = (4 + Math.random() * 5) + 's';
+    c.style.animationDelay = (Math.random() * 6) + 's';
+    confettiEl.appendChild(c);
+  }
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 35; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    const size = (2 + Math.random() * 3) + 'px';
+    s.style.width = s.style.height = size;
+    s.style.animationDuration = (2 + Math.random() * 3) + 's';
+    s.style.animationDelay = (Math.random() * 5) + 's';
+    starsEl.appendChild(s);
+  }
 </script>
 </body>
 </html>
